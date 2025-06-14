@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transfer to Self</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+      color: #fff;
+    }
+
+    /* Header */
+    .header {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+      backdrop-filter: blur(5px);
+    }
+
+    .header .back-btn {
+      position: absolute;
+      left: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* Container */
+    .container {
+      padding: 20px;
+    }
+
+    /* Card Style */
+    .card {
+      background: white;
+      color: #333;
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .card .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .card .left i {
+      font-size: 22px;
+      color: #2575fc;
+    }
+
+    .card .left span {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    /* Transfer Button */
+    .transfer-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(to right, #2575fc, #6a11cb);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .transfer-btn:hover {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+    }
+
+    /* Confirmation Message */
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+      font-size: 16px;
+      font-weight: bold;
+      color: #a0ffbf;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></div>
+    Transfer to Self
+  </div>
+
+  <!-- Options -->
+  <div class="container">
+    <div class="card" onclick="selectOption('My UPI ID')">
+      <div class="left">
+        <i class="fas fa-at"></i>
+        <span>My UPI ID</span>
+      </div>
+      <i class="fas fa-chevron-right"></i>
+    </div>
+
+    <div class="card" onclick="selectOption('My Bank Account')">
+      <div class="left">
+        <i class="fas fa-university"></i>
+        <span>My Bank Account</span>
+      </div>
+      <i class="fas fa-chevron-right"></i>
+    </div>
+
+    <div class="card" onclick="selectOption('My Phone Number')">
+      <div class="left">
+        <i class="fas fa-mobile-alt"></i>
+        <span>My Phone Number</span>
+      </div>
+      <i class="fas fa-chevron-right"></i>
+    </div>
+
+    <button class="transfer-btn" onclick="transferMoney()">Transfer</button>
+    <div class="message" id="messageBox">Transfer to self has been initiated ✅</div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function selectOption(option) {
+      alert("Selected: " + option);
+    }
+
+    function transferMoney() {
+      document.getElementById("messageBox").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

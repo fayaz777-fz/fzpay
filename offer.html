@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Offers Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-color: #0f9d58;
+      --secondary-color: #fbbc04;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --border-radius: 18px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f1f3f4;
+      padding: 0;
+      margin: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff6f61, #ffcc70, #32c5ff, #7d5fff);
+      background-size: 300% 300%;
+      animation: gradientFlow 8s ease infinite;
+      color: white;
+      padding: 25px 20px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      text-align: center;
+    }
+
+    @keyframes gradientFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    header h1 {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 20px 0 10px;
+      color: var(--text-color);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+      display: flex;
+      padding: 16px;
+      margin-bottom: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      margin-right: 16px;
+      object-fit: contain;
+    }
+
+    .card .content {
+      flex: 1;
+    }
+
+    .content .title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .content .desc {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .content .link {
+      margin-top: 8px;
+      display: inline-block;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 22px;
+      }
+
+      .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .card img {
+        margin-bottom: 10px;
+      }
+
+      .card .content {
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Offers & Rewards</h1>
+  </header>
+
+  <div class="container">
+    <div class="section-title">🎁 Exclusive Offers</div>
+
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDBJrQNx3g80GKClKVcRwjKKTVJ5NpAUxprw&s" alt="7UP">
+      <div class="content">
+        <div class="title">Refresh your day</div>
+        <div class="desc">Earn up to ₹50 cashback with 7UP!</div>
+        <a href="#" class="link">Get Offer →</a>
+      </div>
+    </div>
+
+    <div class="section-title">🔥 Popular Offers</div>
+
+    <div class="card">
+      <img src="https://img.icons8.com/color/512/google-pay.png" alt="Google Pay">
+      <div class="content">
+        <div class="title">Get 1% cashback</div>
+        <div class="desc">Up to ₹500 on Malabar Gold Coin gift cards.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1404/1404945.png" alt="Pizza">
+      <div class="content">
+        <div class="title">₹2000 off on Pizza</div>
+        <div class="desc">Save big on your favorite pizza orders.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://img.icons8.com/color/512/google-pay.png" alt="Google Pay">
+      <div class="content">
+        <div class="title">5% cashback</div>
+        <div class="desc">Get up to ₹500 on Ajio gift card purchases.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://img.icons8.com/color/512/google-pay.png" alt="Google Pay">
+      <div class="content">
+        <div class="title">7% cashback</div>
+        <div class="desc">Get up to ₹500 on World of Titan gift card purchases.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://img.icons8.com/color/512/google-pay.png" alt="Google Pay">
+      <div class="content">
+        <div class="title">7% cashback</div>
+        <div class="desc">Get up to ₹500 on Ola gift card purchase on Google pay.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://media.karousell.com/media/photos/products/2022/6/14/sg_ready_stocks_magsafe_wirele_1655219645_d572fce9_progressive" alt="MagSafe Powerbank">
+      <div class="content">
+        <div class="title">Flat 50% Off</div>
+        <div class="desc">On Mag Safe Wireless Charging Powerbank.</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

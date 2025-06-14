@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fz Pay UI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2a2d43; /* Space Cadet */
+      color: white;
+    }
+    .top-section {
+      background-color: #32174d; /* Russian Violet */
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    .separator {
+      height: 2px;
+      background-color: white;
+      width: 100%;
+    }
+    .close-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .help-icon {
+      font-size: 22px;
+      width: 30px;
+      height: 30px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .content-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 0 0 40px;
+    }
+    .text-content p {
+      margin: 0;
+      line-height: 1.4;
+    }
+    .text-line-1, .text-line-2 {
+      font-size: 40px;
+    }
+    .text-sub {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    .semicircle-image {
+      width: 220px;
+      height: 220px;
+      background-color: white;
+      border-top-left-radius: 110px;
+      border-bottom-left-radius: 110px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+    }
+    .semicircle-image img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+    }
+    .card-section, .upi-section, .withdraw-section {
+      display: flex;
+      align-items: flex-start;
+      padding-left: 40px;
+      margin-top: 30px;
+    }
+    .card-section img,
+    .upi-section img,
+    .withdraw-section img {
+      width: 30px;
+      height: 30px;
+    }
+    .card-texts,
+    .upi-texts,
+    .withdraw-texts {
+      margin-left: 50px;
+    }
+    .card-title,
+    .upi-title,
+    .withdraw-title {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .card-subtext,
+    .upi-subtext,
+    .withdraw-subtext {
+      font-size: 12px;
+    }
+
+    /* Shared Button Field Style */
+    .upgrade-button {
+      margin-top: 30px;
+      background-color: #ffffff10;
+      border: 2px solid white;
+      border-radius: 20px;
+      color: white;
+      padding: 15px 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+      text-align: left;
+    }
+    .upgrade-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .upgrade-subtext {
+      font-size: 10px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Section -->
+  <div class="top-section">
+    <div class="top-bar">
+      <div class="close-icon" onclick="handleClose()">✕</div>
+      <div class="help-icon" onclick="handleHelp()">?</div>
+    </div>
+    <div class="separator"></div>
+  </div>
+
+  <!-- Main Text + Semicircle -->
+  <div class="content-row">
+    <div class="text-content">
+      <p class="text-line-1">Enjoy PIN - Less</p>
+      <p class="text-line-2">Payments</p>
+      <p class="text-sub">up to ₹4,00,000 with Fz Pay Wallet !</p>
+    </div>
+    <div class="semicircle-image">
+      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" alt="100 Rs in bag">
+    </div>
+  </div>
+
+  <!-- Credit Card Section -->
+  <div class="card-section">
+    <img src="data:image/png;base64,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" alt="Credit Card Icon">
+    <div class="card-texts">
+      <div class="card-title">Top up using credit card</div>
+      <div class="card-subtext">Highest wallet limit : ₹4L</div>
+    </div>
+  </div>
+
+  <!-- UPI QR Code Section -->
+  <div class="upi-section">
+    <img src="data:image/jpeg;base64,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4ha0+r8TqDRkUsUbqipmYXPLQXhsjnVVQAeAIBB6URZ/jDbXxNt0iybdu/E3PdmLHoVd6Y0LE7SDKanoqeeGmgdI6AlscQkqX5PzBBdaI9q5un6eI1babxOEtZA2mjjxNFNBU1OKU4nWyNmixAzPSgth8oG8gdJAXrHAi4II5+CrOq0Q59XDSmnZpAUNFHG8SvDWGSU+ecQNzhj6sS+et+n44YxR07oqUUrGTPjZezpWuEjaVhaLW3uccvyjibNC0SsI6hjgS1zXAbyCCB02UUr3iurmUrnHxdtM2pewEjbmRxEbXEZljQ0kjcSRda2uOh6elop3UsMcM07W0jdmMOLbPawXAyvne5CKmrJ2nIOaeggr6KL6oaEZAXO8Rp6N2FrA6N7XveOOIhotmB03UoUBERAREQEREEan1JpXOkN6hrJXl8kLZntp3uPnF0YPHiNxXUi0RE2o8YAIeIhA0fkawOxWa3hnbsC6KIOZXaChkdI8tLXywmB72mzyw8L844FeUmgoY5Y5WhwMUAp2C/JbGCDkOc2GfsXURByqvQMUkssrjJilg8XJDrWju4nB6JJcc+haMGqETYXwbWrdHJEYMDpiWtYQBZgtyTYWvzKRogj9DqjBG9j3OqJzFbZiaV0jGECwc1h5IIG42uOC6WmNGMqYTDLiwOLSQDYnC4OAJ5iQLhbyIOfVaKjkmimficYcRY2/9MOcLY8PFwFwDwuUfoqM1IqeUJBEYcjyS0uDsxxIO4+0roIg4rNWoBSspP6myY9r7YuU8tftLPP5gXZkcVuHRUW3dUYBtXxiIv44AXENHNm493Mt5EEYGpMA2WCSrjMUIgYWSlpwA3sSBmb/ACC6tLoaNk/jAMjpNiyC7nYuQwlw/USSSeOS6SINNmjImzuqA0CV7BG543ua0ktB6L71oDVin8TNGQ8xElx5REmIv2mPGLHFjzuu2iDlaH0DFTFz2mR8j7B0sj3SSuDfNbiduaLnIZZlfLSGrcMzqhz9pephbA8h1rRtxHCzLk3xOufau0iDSrNFRS05p5GB0TmYC0+iBYW5iMs/YsJdExumhlOLFAHCMX5AxgNJI4mwt1ldBEHAqdVY31D6gS1cb5MGMRyljTgFmiwG4C/aVlVarU8jahrg8+MyNme7Fyw9gaGGM/lw4G26+dd1EHOotEsifNI0vxzlrnuJubtYGNw5ZAAXtzkrGi0HDFTGmaDgcHhxJu95kvjc53FxJJuumiCPTao07mQAGdjqdgijlZI5kwYABhc8ecMhkUqNUIHQtixVIwy7fHtXGZ0gFg50jrk2G4cLDmUhRBp6KoBAzAHzSZk4pXl78+GI8PYtxEQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH//Z" alt="QR Code Icon">
+    <div class="upi-texts">
+      <div class="upi-title">UPI Payments</div>
+      <div class="upi-subtext">To any bank a/c, QR, wallet</div>
+    </div>
+  </div>
+
+  <!-- Withdraw Section -->
+  <div class="withdraw-section">
+    <img src="https://cdn-icons-png.flaticon.com/512/6466/6466947.png" alt="Withdraw Icon">
+    <div class="withdraw-texts">
+      <div class="withdraw-title">Instant Withdraw Money</div>
+      <div class="withdraw-subtext">withdraw cash upto ₹2L</div>
+    </div>
+  </div>
+
+  <!-- Upgrade Button -->
+  <div class="upgrade-button">
+    <div class="upgrade-title">Upgrade to Full - KYC Wallet</div>
+    <div class="upgrade-subtext">upgrade the wallet to Top up with Credit cards and transfer funds to any bank a/c</div>
+  </div>
+
+  <!-- Transaction History Button -->
+  <div class="upgrade-button">
+    <div class="upgrade-title">Wallet Transaction History →</div>
+  </div>
+
+  <script>
+    function handleClose() {
+      alert("Close button clicked!");
+    }
+    function handleHelp() {
+      alert("Help button clicked!");
+    }
+  </script>
+
+</body>
+</html>

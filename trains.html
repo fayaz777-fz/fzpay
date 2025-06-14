@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Train Booking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #c62828;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 150px;
+      height: auto;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn {
+      background-color: #c62828;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      margin-top: 20px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #a61818;
+    }
+
+    .success-message {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Train Ticket Booking</div>
+
+  <div class="container">
+    <div class="logo">
+      <img src="https://cdn.vectorstock.com/i/500p/38/81/steam-locomotive-speeding-mascot-vector-21123881.jpg" alt="Train Logo">
+    </div>
+
+    <form id="trainForm">
+      <label for="from">From</label>
+      <input type="text" id="from" name="from" required>
+
+      <label for="to">To</label>
+      <input type="text" id="to" name="to" required>
+
+      <label for="date">Date of Journey</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="class">Class</label>
+      <select id="class" name="class">
+        <option value="sleeper">Sleeper</option>
+        <option value="ac3">AC 3 Tier</option>
+        <option value="ac2">AC 2 Tier</option>
+        <option value="ac1">AC 1 Tier</option>
+      </select>
+
+      <label for="seats">No. of Passengers</label>
+      <select id="seats" name="seats">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+
+      <button class="btn" type="submit">Book Ticket</button>
+    </form>
+
+    <div id="successMsg" class="success-message">
+      ✅ Train ticket booked successfully!
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("trainForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("successMsg").style.display = "block";
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transaction</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .banner {
+      height: 100px;
+      background-color: #b3a0c9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .banner-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .arrow-icon {
+      font-size: 22px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    .male-logo {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-image: url('https://randomuser.me/api/portraits/men/75.jpg');
+      background-size: cover;
+      background-position: center;
+      margin-right: 10px;
+      border: 2px solid white;
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .name-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .banner-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon {
+      font-size: 20px;
+      padding: 8px;
+      border-radius: 50%;
+      color: #333;
+      background-color: #f0f0f0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .icon:hover {
+      background-color: #ddd;
+    }
+
+    .content {
+      min-height: 100vh;
+      background: linear-gradient(
+        to bottom,
+        #a0d2eb 0%,
+        #e5eaf5 25%,
+        #d0bdf4 50%,
+        #8458B3 75%,
+        #a28089 100%
+      );
+      padding: 20px 10px 40px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .date-button {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 30px;
+      background-color: white;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: default;
+    }
+
+    .info-banner,
+    .received-banner {
+      width: 100%;
+      max-width: 400px;
+      background-color: #ffffffcc;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      padding: 15px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .amount {
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+    }
+
+    .status i {
+      color: green;
+      font-size: 18px;
+    }
+
+    .status-text {
+      margin-left: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .dotted-buttons {
+      display: flex;
+      justify-content: flex-end; /* Changed from center to right-align */
+      flex-wrap: wrap;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .dotted-oval {
+      border: 2px dotted white;
+      border-radius: 30px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: bold;
+      background-color: #4B0082;
+      color: white;
+      cursor: pointer;
+    }
+
+    .enter-banner {
+      width: 100%;
+      background-color: #210038;
+      border: 2px solid #fff;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      box-sizing: border-box;
+      color: white;
+    }
+
+    .enter-text {
+      font-size: 18px;
+    }
+
+    .enter-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .enter-icons i {
+      font-size: 20px;
+      background-color: white;
+      color: #8458B3;
+      padding: 8px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .enter-icons .main {
+      background-color: green;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 480px) {
+      .name {
+        font-size: 18px;
+      }
+
+      .banner {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+
+      .arrow-icon {
+        font-size: 20px;
+      }
+
+      .male-logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .icon {
+        font-size: 22px;
+        padding: 10px;
+      }
+
+      .enter-text {
+        font-size: 16px;
+      }
+
+      .enter-icons i {
+        font-size: 18px;
+        padding: 6px;
+      }
+
+      .info-banner,
+      .received-banner {
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <div class="banner-left">
+      <i class="fas fa-arrow-left arrow-icon"></i>
+      <div class="name-section">
+        <div class="male-logo"></div>
+        <div class="name">Muhammed</div>
+      </div>
+    </div>
+    <div class="banner-right">
+      <i class="fas fa-circle-question icon"></i>
+      <i class="fas fa-ellipsis-v icon"></i>
+    </div>
+  </div>
+
+  <div class="content">
+    <button class="date-button">June 10, 2025</button>
+
+    <div class="info-banner">
+      <div class="amount">&#8377;700</div>
+      <div class="divider"></div>
+      <div class="status">
+        <i class="fas fa-check-circle"></i>
+        <div class="status-text">Sent Securely</div>
+      </div>
+    </div>
+
+    <button class="date-button">June 11 2025</button>
+
+    <div class="received-banner">
+      <div class="amount">&#8377;1200</div>
+      <div class="divider"></div>
+      <div class="status">
+        <i class="fas fa-check-circle"></i>
+        <div class="status-text">Received Instantly</div>
+      </div>
+    </div>
+
+    <button class="date-button">June 12, 2025</button>
+
+    <div class="received-banner">
+      <div class="amount">&#8377;350</div>
+      <div class="divider"></div>
+      <div class="status">
+        <i class="fas fa-check-circle"></i>
+        <div class="status-text">Received Instantly</div>
+      </div>
+    </div>
+
+    <button class="date-button">June 13, 2025</button>
+
+    <div class="info-banner">
+      <div class="amount">&#8377;500</div>
+      <div class="divider"></div>
+      <div class="status">
+        <i class="fas fa-check-circle"></i>
+        <div class="status-text">Sent Securely</div>
+      </div>
+    </div>
+
+    <div class="dotted-buttons">
+      <button class="dotted-oval">Hi</button>
+      <button class="dotted-oval">Send &#8377;1</button>
+    </div>
+
+    <div class="enter-banner">
+      <div class="enter-text">Enter amount in rupees</div>
+      <div class="enter-icons">
+        <i class="fas fa-plus-circle"></i>
+        <i class="fas fa-arrow-right main"></i>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

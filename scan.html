@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #1d1d1d, #121212);
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5rem; /* Increased font size */
+      margin-bottom: 20px;
+      color: #ffffff; /* White color */
+      text-shadow: 0 0 10px #8a2be2; /* Violet color */
+    }
+    #reader {
+      width: 320px;
+      height: 320px;
+      position: relative;
+      border: 3px solid #8a2be2; /* Violet color */
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.5); /* Violet color */
+    }
+    #scanner-border {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      border: 2px dashed rgba(138, 43, 226, 0.7); /* Violet color */
+      border-radius: 15px;
+      animation: scan-border 2s infinite;
+    }
+    @keyframes scan-border {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+    #result {
+      margin-top: 25px;
+      padding: 15px 20px;
+      background: #222;
+      border: 2px solid #8a2be2; /* Violet color */
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      font-size: 1.1rem;
+      word-break: break-word;
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.3); /* Violet color */
+    }
+    #rescan-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background: #8a2be2; /* Violet color */
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #rescan-btn:hover {
+      background: #7a2ac4; /* Slightly darker violet */
+    }
+    /* Styling for the top-left and top-right icons */
+    .top-icons-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      position: absolute;
+      top: 10px;
+      padding: 0 20px;
+    }
+    .top-icons-left,
+    .top-icons-right {
+      display: flex;
+      gap: 15px;
+    }
+    .top-icons-left i,
+    .top-icons-right i {
+      font-size: 24px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    .top-icons-left i:hover,
+    .top-icons-right i:hover {
+      color: #8a2be2; /* Violet color */
+    }
+    .top-icons-right i + i {
+      margin-left: 10px;
+    }
+
+    /* Add a box around "Scan with Photos" and the photo symbol */
+    .scan-with-photos-wrapper {
+      display: flex;
+      align-items: center;
+      background-color: #222; /* Dark background for the box */
+      padding: 10px 20px;
+      border-radius: 30px; /* Oval shape */
+      border: 2px solid #8a2be2; /* Violet color */
+      color: #ffffff;
+      font-size: 15px;
+      margin-right: 10px;
+    }
+    .scan-with-photos-wrapper i {
+      font-size: 20px;
+      margin-left: 10px; /* Space between the text and icon */
+    }
+     .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 0;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+
+    .bottom-nav-item {
+      text-align: center;
+      font-size: 14px; /* Increased text size */
+      color: #333;
+      font-weight: bold;
+    }
+
+    .bottom-nav-item img {
+      width: 32px;  /* Increased icon size */
+      height: 32px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Wrapper for both left and right icons -->
+  <div class="top-icons-wrapper">
+    <div class="top-icons-left">
+      <i class="fas fa-arrow-left"></i> <!-- Left arrow icon -->
+    </div>
+    <div class="top-icons-right">
+      <!-- "Scan with Photos" text and photo icon inside a box -->
+      <div class="scan-with-photos-wrapper">
+        <span>Scan with Photos</span>
+        <i class="fas fa-photo-video"></i> <!-- Photo icon -->
+      </div>
+      <i class="fas fa-question-circle"></i> <!-- Question mark Icon -->
+    </div>
+  </div>
+
+  <h1>QR Scanner</h1>
+
+  <div id="reader">
+    <div id="scanner-border"></div>
+  </div>
+
+  <div id="result">Waiting for scan...</div>
+  <button id="rescan-btn" style="display:none;" onclick="startAutoScan()">Scan Again</button>
+  <div class="bottom-nav">
+  <a href="main.html" class="bottom-nav-item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8IN98VUoRdpuCTF7R9aFC_pWmjAE-bD1Rkg&s" alt="Home" />
+    <div>Home</div>
+  </a>
+
+  <a href="scan.html" class="bottom-nav-item">
+    <img src="https://st5.depositphotos.com/34588546/62546/v/450/depositphotos_625469914-stock-illustration-code-scanner-line-icon-scan.jpg" alt="Scanner" />
+    <div>Scan</div>
+  </a>
+
+  <a href="history.html" class="bottom-nav-item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpjSTTc3_ue95ZKTAwu8DDvxfsARlZ-kWhbw&s" alt="History" />
+    <div>History</div>
+  </a>
+</div>
+
+  <script>
+    let html5QrcodeScanner;
+
+    function startAutoScan() {
+      document.getElementById('result').innerText = "Waiting for scan...";
+      document.getElementById('rescan-btn').style.display = 'none';
+      if (!html5QrcodeScanner) {
+        html5QrcodeScanner = new Html5Qrcode("reader");
+      }
+
+      html5QrcodeScanner.start(
+        { facingMode: "environment" },
+        {
+          fps: 10,
+          qrbox: 250
+        },
+        qrCodeMessage => {
+          document.getElementById('result').innerText = `✅ Scanned: ${qrCodeMessage}`;
+          stopScanner();
+          playBeep();
+          document.getElementById('rescan-btn').style.display = 'inline-block';
+        },
+        errorMessage => {
+          // console.log(`QR error: ${errorMessage}`);
+        }
+      ).catch(err => {
+        console.error(`Scanner start failed: ${err}`);
+      });
+    }
+
+    function stopScanner() {
+      if (html5QrcodeScanner) {
+        html5QrcodeScanner.stop().then(() => {
+          console.log("Scanner stopped after success");
+        }).catch(err => {
+          console.error("Failed to stop scanner", err);
+        });
+      }
+    }
+
+    function playBeep() {
+      const beep = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
+      beep.play();
+    }
+
+    // Auto start when page loads
+    window.addEventListener('load', startAutoScan);
+  </script>
+
+</body>
+</html>

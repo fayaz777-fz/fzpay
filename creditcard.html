@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Credit Card Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #4b0082, #1a1a40);
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 28px;
+      color: #ffd700;
+    }
+
+    .card-preview {
+      background: linear-gradient(145deg, #5d2f8e, #330066);
+      width: 320px;
+      height: 200px;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      margin: 30px 0;
+      position: relative;
+      color: #fff;
+    }
+
+    .card-logo {
+      width: 50px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .card-number {
+      margin-top: 50px;
+      font-size: 22px;
+      letter-spacing: 3px;
+    }
+
+    .card-holder, .card-expiry {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+    }
+
+    .form-container {
+      background-color: #ffffff10;
+      padding: 20px;
+      border-radius: 10px;
+      width: 320px;
+      backdrop-filter: blur(5px);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #f0f0f0;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      background-color: #f0f0f0;
+      font-size: 16px;
+    }
+
+    input:focus {
+      outline: 2px solid #ffd700;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #ffd700;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      color: #330066;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #ffea00;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Credit Card Details</h1>
+
+  <div class="card-preview" id="cardPreview">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" class="card-logo" />
+    <div class="card-number" id="previewNumber">#### #### #### ####</div>
+    <div class="card-holder-expiry">
+      <div class="card-holder" id="previewName">NAME</div>
+      <div class="card-expiry" id="previewExpiry">MM/YY</div>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label for="cardNumber">Card Number</label>
+      <input type="text" id="cardNumber" maxlength="19" placeholder="#### #### #### ####" />
+    </div>
+    <div class="form-group">
+      <label for="cardName">Card Holder Name</label>
+      <input type="text" id="cardName" placeholder="John Doe" />
+    </div>
+    <div class="form-group">
+      <label for="expiry">Expiry (MM/YY)</label>
+      <input type="text" id="expiry" maxlength="5" placeholder="MM/YY" />
+    </div>
+    <button class="btn">Submit</button>
+  </div>
+
+  <script>
+    const numberInput = document.getElementById('cardNumber');
+    const nameInput = document.getElementById('cardName');
+    const expiryInput = document.getElementById('expiry');
+
+    const previewNumber = document.getElementById('previewNumber');
+    const previewName = document.getElementById('previewName');
+    const previewExpiry = document.getElementById('previewExpiry');
+
+    numberInput.addEventListener('input', () => {
+      let formatted = numberInput.value.replace(/\D/g, '').match(/.{1,4}/g);
+      previewNumber.textContent = formatted ? formatted.join(' ') : '#### #### #### ####';
+      numberInput.value = formatted ? formatted.join(' ') : '';
+    });
+
+    nameInput.addEventListener('input', () => {
+      previewName.textContent = nameInput.value || 'NAME';
+    });
+
+    expiryInput.addEventListener('input', () => {
+      let val = expiryInput.value.replace(/\D/g, '').slice(0, 4);
+      if (val.length >= 3) {
+        previewExpiry.textContent = val.slice(0, 2) + '/' + val.slice(2);
+        expiryInput.value = val.slice(0, 2) + '/' + val.slice(2);
+      } else {
+        previewExpiry.textContent = 'MM/YY';
+      }
+    });
+  </script>
+
+</body>
+</html>

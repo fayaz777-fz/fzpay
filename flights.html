@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Flights</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #003366, #001a33);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin: 30px 0 20px;
+      font-size: 28px;
+      color: #ffcc00;
+    }
+
+    .flight-card {
+      background-color: rgba(255, 255, 255, 0.07);
+      padding: 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .logo-center {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-center img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: contain;
+      background-color: white;
+      padding: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      background: #f0f0f0;
+      color: #000;
+    }
+
+    input:focus, select:focus {
+      outline: 2px solid #ffcc00;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #ffcc00;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      color: #003366;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ffe066;
+    }
+
+    .confirmation {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #00c853;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .airline-options {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+
+    .airline-options img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      background-color: white;
+      border-radius: 200px;
+      padding: 5px;
+      box-shadow: 0 0 5px #000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Book a Flight</h1>
+
+  <div class="flight-card">
+
+    <!-- Airline Logos -->
+    <div class="logo-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/3097/3097084.png" alt="Flight Logo">
+    </div>
+
+    <div class="airline-options">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/IndiGo_Airbus_A320neo_F-WWDG_%28to_VT-ITI%29_%2828915135713%29.jpg/1200px-IndiGo_Airbus_A320neo_F-WWDG_%28to_VT-ITI%29_%2828915135713%29.jpg" alt="IndiGo">
+      <img src="https://assets.cntraveller.in/photos/64d61d2f500968bfe5b8a97b/16:9/w_3504,h_1971,c_limit/Air-India-3.jpg" alt="Air India">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9iYZ4Zg5c52FzJtuksrstGa-H6g916dTqJaXnBSH_xSgJ2jrNdcSxrLcPgDZIhDFZK-M&usqp=CAU" alt="Akasa Air">
+    </div>
+
+    <!-- Booking Form -->
+    <div class="form-group">
+      <label for="from">From</label>
+      <input type="text" id="from" placeholder="e.g. Hyderabad" />
+    </div>
+
+    <div class="form-group">
+      <label for="to">To</label>
+      <input type="text" id="to" placeholder="e.g. Delhi" />
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" id="date" />
+    </div>
+
+    <div class="form-group">
+      <label for="passengers">Passengers</label>
+      <select id="passengers">
+        <option value="1">1 Passenger</option>
+        <option value="2">2 Passengers</option>
+        <option value="3">3 Passengers</option>
+        <option value="4">4 Passengers</option>
+      </select>
+    </div>
+
+    <button class="btn" onclick="bookFlight()">Book Flight</button>
+
+    <div class="confirmation" id="confirmationBox"></div>
+  </div>
+
+  <script>
+    function bookFlight() {
+      const from = document.getElementById('from').value.trim();
+      const to = document.getElementById('to').value.trim();
+      const date = document.getElementById('date').value;
+      const passengers = document.getElementById('passengers').value;
+
+      const confirmBox = document.getElementById('confirmationBox');
+
+      if (!from || !to || !date || !passengers) {
+        alert('Please fill in all details.');
+        return;
+      }
+
+      confirmBox.style.display = 'block';
+      confirmBox.textContent = `Flight booked from ${from} to ${to} on ${date} for ${passengers} passenger(s)!`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Invite Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #191970;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .banner {
+      width: 100%;
+      height: 300px;
+      background-color: #dbe9f4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: black;
+      position: relative;
+      padding: 0 40px;
+      box-sizing: border-box;
+    }
+
+    .smartphone {
+      width: 150px;
+      height: 180px;
+      background-color: #222;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 5px 25px 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      position: relative;
+      justify-content: space-between;
+    }
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      justify-items: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .app-grid img {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      background-color: white;
+      padding: 2px;
+    }
+
+    .smartphone::before {
+      content: '';
+      width: 30px;
+      height: 3px;
+      background: #666;
+      border-radius: 2px;
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .home-button {
+      position: absolute;
+      bottom: 8px;
+      width: 12px;
+      height: 12px;
+      background-color: #999;
+      border-radius: 50%;
+    }
+
+    .smartphone-button {
+      margin-bottom: 5px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .banner-text {
+      text-align: center;
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .banner-text h1 {
+      font-size: 30px;
+      margin: 0;
+    }
+
+    .banner-text p {
+      font-size: 15px;
+      margin: 5px 0;
+    }
+
+    .coin-icon {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #ffd700, #e6c200);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 0 10px #e6c200;
+      margin-right: 60px;
+    }
+
+    .invite-section {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .invite-section h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .icons-row {
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .icon-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .icon-block img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .icon-block span {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    .contact-invite-text {
+      text-align: left;
+      margin: 20px 0 10px 20px;
+      font-size: 25px;
+    }
+
+    .search-bar {
+      margin: 0 20px 30px 20px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .search-bar input {
+      width: 100%;
+      height: 65px;
+      border-radius: 50px;
+      border: none;
+      padding: 0 40px 0 45px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 30px;
+      font-size: 16px;
+      color: #999;
+      pointer-events: none;
+    }
+
+    .contacts-list {
+      margin: 0 20px 40px 20px;
+      background: #f0f0f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ccc;
+      color: #000;
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .contact-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .contact-name {
+      margin-left: 30px;
+      flex: 1;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .invite-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .invite-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="smartphone">
+      <div class="app-grid">
+        <img src="https://img.icons8.com/color/48/whatsapp--v1.png" />
+        <img src="https://img.icons8.com/color/48/facebook-new.png" />
+        <img src="https://img.icons8.com/color/48/twitter--v1.png" />
+        <img src="https://img.icons8.com/color/48/google-photos.png" />
+        <img src="https://img.icons8.com/color/48/camera--v1.png" />
+        <img src="https://img.icons8.com/ios-filled/50/file.png" />
+        <img src="https://img.icons8.com/fluency/48/money-transfer.png" />
+        <img src="https://img.icons8.com/color/48/paytm.png" />
+        <img src="https://img.icons8.com/color/48/google-pay-india.png" />
+      </div>
+      <button class="smartphone-button">Open</button>
+      <div class="home-button"></div>
+    </div>
+
+    <div class="banner-text">
+      <h1>Earn ₹200!</h1>
+      <p>Invite your contacts</p>
+      <p>NRI friends &amp; family to Fz Pay</p>
+      <p>Earn on their 1st UPI payment</p>
+    </div>
+
+    <div class="coin-icon">₹</div>
+  </div>
+
+  <!-- Invite Icons Section -->
+  <div class="invite-section">
+    <h2>INVITE &rarr;</h2>
+    <div class="icons-row">
+      <div class="icon-block">
+        <img src="https://img.icons8.com/color/48/whatsapp--v1.png" />
+        <span>WhatsApp</span>
+      </div>
+      <div class="icon-block">
+        <img src="https://img.icons8.com/fluency/48/instagram-new.png" />
+        <span>Instagram</span>
+      </div>
+      <div class="icon-block">
+        <img src="https://img.icons8.com/color/48/telegram-app.png" />
+        <span>Telegram</span>
+      </div>
+      <div class="icon-block">
+        <img src="https://img.icons8.com/color/48/sms.png" />
+        <span>SMS</span>
+      </div>
+      <div class="icon-block">
+        <img src="https://img.icons8.com/ios-filled/50/more.png" />
+        <span>More</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invite via Contacts -->
+  <div class="contact-invite-text">Invite through contacts list:</div>
+  <div class="search-bar">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" placeholder="Search contacts...">
+  </div>
+
+  <!-- Contact List -->
+  <div class="contacts-list">
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Basha</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Venkat</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Adam</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Hayato</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Dj Alok</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Mohammed</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Shaik</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Jio Wifi</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Waste Contact</div><button class="invite-btn">Invite</button></div>
+    <div class="contact-item"><img src="https://img.icons8.com/ios-filled/50/user.png" /><div class="contact-name">Don’t Lift</div><button class="invite-btn">Invite</button></div>
+  </div>
+
+</body>
+</html>

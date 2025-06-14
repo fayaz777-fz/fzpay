@@ -1,0 +1,449 @@
+v<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FZ Pay</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #333;
+    }
+
+    .container {
+      padding: 30px;
+      padding-bottom: 100px; /* Added padding to avoid content hiding behind bottom nav */
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+      width: fit-content;
+    }
+
+    .user-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+    }
+
+    .account-logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .arrow {
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      color: #fff;
+    }
+
+    .arrow.open {
+      transform: rotate(90deg);
+    }
+
+    .account-details {
+      display: none;
+      margin-top: 10px;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 15px;
+      border-radius: 8px;
+      width: 250px;
+    }
+
+    .icon-section {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .icon-row {
+      display: flex;
+      justify-content: space-around;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .icon-box {
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      padding: 15px;
+      flex: 1;
+      min-width: 120px;
+      max-width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .recharge-tag,
+    .travel-tag,
+    .brand-tag {
+      margin-top: 25px;
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.85);
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      width: fit-content;
+      cursor: pointer;
+    }
+
+    .arrow-icon {
+      font-size: 16px;
+      margin-left: 8px;
+    }
+
+    .wallet-section {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 48px;
+    }
+
+    .wallet-box {
+      text-align: center;
+    }
+
+    .wallet-logo {
+      width: 60px;
+      height: 60px;
+      background-color: #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .wallet-logo img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .wallet-label {
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .transaction-table {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .table-row {
+      display: flex;
+      justify-content: space-around;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .transaction-box {
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      padding: 15px;
+      flex: 1;
+      min-width: 120px;
+      max-width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .transaction-box img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+    .transaction-label {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 0;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+
+    .bottom-nav-item {
+      text-align: center;
+      font-size: 14px; /* Increased text size */
+      color: #333;
+      font-weight: bold;
+    }
+
+    .bottom-nav-item img {
+      width: 32px;  /* Increased icon size */
+      height: 32px;
+      margin-bottom: 6px;
+    }
+    a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="user-image" />
+      <div class="account-logo">Fayaz Fz</div>
+      <div class="arrow" id="toggleArrow">▶</div>
+    </div>
+
+    <!-- Account Details -->
+    <div class="account-details" id="accountDetails">
+      <p><strong>Email:</strong> fayaz@example.com</p>
+      <p><strong>Status:</strong> Active</p>
+    </div>
+
+    <!-- Icon Section -->
+    <div class="icon-section">
+  <div class="icon-row">
+    <a href="main_page_mobile_number.html">📱 Mobile Number</a>
+    <a href="main_page_bank.html">🏦 To Bank</a>
+    <a href="main_page_toself.html">👤 To Self</a>
+   <a href="#" onclick="openBankPage()">💰 Check Balance</a>
+  </div>
+</div>
+
+
+    <!-- Wallet Row -->
+    <div class="wallet-section">
+  <a href="fzwallet.html">
+    <div class="wallet-box">
+      <div class="wallet-logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="FZpay Logo" />
+      </div>
+      <div class="wallet-label">FZpay Wallet</div>
+    </div>
+  </a>
+
+  <a href="rewards.html">
+    <div class="wallet-box">
+      <div class="wallet-logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Rewards Logo" />
+      </div>
+      <div class="wallet-label">Explore Rewards</div>
+    </div>
+  </a>
+
+  <a href="refer.html">
+    <div class="wallet-box">
+      <div class="wallet-logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/983/983902.png" alt="Refer Logo" />
+      </div>
+      <div class="wallet-label">Refer & Get Cash</div>
+    </div>
+  </a>
+
+  <a href="offer.html">
+    <div class="wallet-box">
+      <div class="wallet-logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" alt="Offers Logo" />
+      </div>
+      <div class="wallet-label">My Offers</div>
+    </div>
+  </a>
+</div>
+
+
+   <!-- Recharge & Bills -->
+<div class="recharge-tag">Recharge & Bills <span class="arrow-icon">▶</span></div>
+<div class="transaction-table">
+  <div class="table-row">
+
+    <a href="recharge.html">
+      <div class="transaction-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991145.png" alt="Mobile" />
+        <div class="transaction-label">Mobile Recharge</div>
+      </div>
+    </a>
+
+    <a href="loan.html">
+      <div class="transaction-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2882/2882525.png" alt="Loan" />
+        <div class="transaction-label">Loan</div>
+      </div>
+    </a>
+
+    <a href="creditcard.html">
+      <div class="transaction-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2990/2990851.png" alt="Credit Card" />
+        <div class="transaction-label">Credit Card</div>
+      </div>
+    </a>
+
+    <a href="rent.html">
+      <div class="transaction-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/4631/4631694.png" alt="Rent" />
+        <div class="transaction-label">Rent</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+
+    <!-- Travel Booking -->
+<div class="travel-tag">Travel Booking <span class="arrow-icon">▶</span></div>
+<div class="transaction-table">
+  <div class="table-row">
+
+    <a href="flights.html">
+      <div class="transaction-box">
+        <img src="https://thumbs.dreamstime.com/b/aircraft-airplane-airline-logo-label-journey-air-travel-airliner-symbol-vector-illustration-aircraft-airline-logo-label-122428148.jpg" alt="Flights" style="width: 200px; height: 50px;" />
+        <div class="transaction-label">Flights</div>
+      </div>
+    </a>
+
+    <a href="bus.html">
+      <div class="transaction-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq_MwGgICV4v-n8ugOaV8l1kgOyLSTYyvRew&s" alt="Bus" style="width: 200px; height: 50px; object-fit: contain; margin-bottom: 8px;" />
+        <div class="transaction-label">Bus</div>
+      </div>
+    </a>
+
+    <a href="trains.html">
+      <div class="transaction-box">
+        <img src="https://cdn.vectorstock.com/i/500p/38/81/steam-locomotive-speeding-mascot-vector-21123881.jpg" alt="Trains" style="width: 200px; height: 50px;" />
+        <div class="transaction-label">Trains</div>
+      </div>
+    </a>
+
+    <a href="car.html">
+      <div class="transaction-box">
+        <img src="https://t-cf.bstatic.com/design-assets/assets/v3.142.0/illustrations-traveller/GeniusCarBenefit@4x.png" alt="Car" style="width: 200px; height: 50px;" />
+        <div class="transaction-label">Car</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+
+    <!-- Brand Vouchers -->
+    <div class="brand-tag">Brand Vouchers <span class="arrow-icon">▶</span></div>
+    <div class="transaction-table">
+      <div class="table-row">
+        <div class="transaction-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/603px-Amazon_logo.svg.png" alt="Amazon Logo" style="width: 80px; height: 40px;" /><div class="transaction-label">Amazon Shopping</div></div>
+        <div class="transaction-box"><img src="https://cdn.freelogovectors.net/wp-content/uploads/2022/07/peter-england-logo-freelogovectors.net_-400x186.png" alt="Peter England Logo" style="width: 80px; height: 40px;" /><div class="transaction-label">Peter England</div></div>
+        <div class="transaction-box"><img src="https://relianceretail.com/img/logo.png" alt="Reliance Trends Logo" style="width: 80px; height: 40px;" /><div class="transaction-label">Reliance Trends</div></div>
+        <div class="transaction-box"><img src="https://cdn.iconscout.com/icon/free/png-256/free-ajio-icon-download-in-svg-png-gif-file-formats--company-logo-industry-pack-logos-icons-10673446.png" alt="Ajio Logo" style="width: 80px; height: 40px;" /><div class="transaction-label">Ajio</div></div>
+      </div>
+      <div class="table-row">
+        <div class="transaction-box"><img src="https://logosandtypes.com/wp-content/uploads/2021/01/myntra.svg" alt="Myntra Logo" style="width: 80px; height: 40px;" /><div class="transaction-label">Myntra</div></div>
+        <div class="transaction-box"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg" alt="Flipkart Logo" style="width: 80px; height: 40px;" /><div class="transaction-label">Flipkart</div></div>
+        <div class="transaction-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTjgwtXw5CsPqS1oN4KKf-V6AZWNGYEVdSfw&s" alt="Allen Solly Logo" style="width: 80px; height: 40px;" /><div class="transaction-label">Allen Solly</div></div>
+        <div class="transaction-box"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/39/8f/d8/398fd8b7-30e1-b648-dd7f-d5f06c931aec/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/230x0w.webp" alt="Zomato Logo" style="width: 80px; height: 40px;" /><div class="transaction-label">Zomato</div></div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+<div class="bottom-nav">
+  <a href="main.html" class="bottom-nav-item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8IN98VUoRdpuCTF7R9aFC_pWmjAE-bD1Rkg&s" alt="Home" />
+    <div>Home</div>
+  </a>
+
+  <a href="scan.html" class="bottom-nav-item">
+    <img src="https://st5.depositphotos.com/34588546/62546/v/450/depositphotos_625469914-stock-illustration-code-scanner-line-icon-scan.jpg" alt="Scanner" />
+    <div>Scan</div>
+  </a>
+
+  <a href="history.html" class="bottom-nav-item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpjSTTc3_ue95ZKTAwu8DDvxfsARlZ-kWhbw&s" alt="History" />
+    <div>History</div>
+  </a>
+</div>
+
+  </div>
+  <script>
+  // Get bankId from localStorage
+  const bankId = parseInt(localStorage.getItem('selectedBankId'));
+
+  // Toggle arrow if available
+  const toggleArrow = document.getElementById('toggleArrow');
+  const accountDetails = document.getElementById('accountDetails');
+
+  if (toggleArrow && accountDetails) {
+    toggleArrow.addEventListener('click', () => {
+      const isVisible = accountDetails.style.display === 'block';
+      accountDetails.style.display = isVisible ? 'none' : 'block';
+      toggleArrow.classList.toggle('open');
+    });
+  }
+
+  // Open bank page based on ID
+  function openBankPage() {
+    const bankPages = {
+      0: "sbi.html",
+      1: "hdfc.html",
+      2: "icici.html",
+      3: "axis.html",
+      4: "canara.html",
+      5: "kotak.html",
+      6: "union.html",
+      7: "idfc.html",
+      8: "bob.html"
+    };
+
+    if (!isNaN(bankId) && bankPages.hasOwnProperty(bankId)) {
+      window.location.href = bankPages[bankId];
+    } else {
+      alert("Bank not selected or invalid selection.");
+    }
+  }
+
+  // Optional: Auto-redirect on load
+  // openBankPage();
+</script>
+
+
+ 
+
+
+
+</body>
+</html>

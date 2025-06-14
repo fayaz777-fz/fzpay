@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transfer Money Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: indigo; /* Page background color */
+    }
+
+    /* Top Banner */
+    .top-banner {
+      background-color: purple;
+      height: 55px; /* Increased height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .top-banner .arrow {
+      position: absolute;
+      left: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Search Bar */
+    .search-container {
+      margin-top: 25px; /* Adjusted for banner size */
+      padding: 0 15px;
+    }
+
+    .search-bar {
+      width: 100%;
+      height: 40px;
+      background-color: #fff;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .search-bar i {
+      font-size: 18px;
+      color: #888;
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      margin-left: 10px;
+      font-size: 14px;
+      width: 100%;
+      color: #555;
+      background: transparent;
+    }
+
+    /* Oval Shapes */
+    .ovals-container {
+      margin-top: 20px;
+      padding: 0 15px;
+      display: flex;
+      gap: 20px; /* Space between ovals */
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .oval {
+      background-color: white;
+      color: indigo;
+      padding: 15px 30px; /* Increased padding for bigger ovals */
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+      transition: transform 0.2s;
+    }
+
+    .oval:hover {
+      transform: scale(1.05);
+    }
+
+    /* New Section Text */
+    .text-section {
+      margin-top: 60px; /* 60px gap after ovals */
+      text-align: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .text-section .small-text {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .text-section .big-text {
+      font-size: 50px;
+      margin-bottom: 80px; /* 80px gap after "Account Number" */
+    }
+
+    .text-section .info-text {
+      font-size: 20px;
+      font-weight: normal;
+      margin-bottom: 5px; /* Increased gap between lines */
+    }
+
+    .text-section .mobile-number-text {
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: underline;
+      color: #1e90ff; /* Link color (blue) */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <div class="arrow" onclick="goBack()">&#8592;</div>
+    Transfer Money
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <div class="search-bar">
+      <i>&#128269;</i> <!-- Search icon -->
+      <input type="text" placeholder="Search Bank Account, UPI ID">
+    </div>
+  </div>
+
+  <!-- 3 Ovals -->
+  <div class="ovals-container">
+    <div class="oval">Bank Accounts</div>
+    <div class="oval">UPI ID</div>
+    <div class="oval">UPI Number</div>
+  </div>
+
+  <!-- New Text Section -->
+  <div class="text-section">
+    <div class="small-text">Send Money To Any Bank</div>
+    <div class="big-text">Account Number</div>
+    <div class="info-text">Don't Have Bank Account Details?</div>
+    <div class="mobile-number-text">SEND MONEY VIA MOBILE NUMBER</div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instant Personal Loan</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: none;
+    }
+
+    .header {
+      background: linear-gradient(to right, #6a11cb, #2575fc); /* Updated layered color */
+      color: white;
+      padding: 30px 20px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .back-arrow {
+      position: absolute;
+      left: 15px;
+      top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .header h1 {
+      font-size: 28px;
+    }
+
+    .header p {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .content {
+      padding: 20px;
+      width: 100%;
+    }
+
+    .detail {
+      padding-left: 28px;
+      margin-bottom: 16px;
+      font-size: 16px;
+      color: #222;
+      position: relative;
+    }
+
+    .detail::before {
+      content: "✔️";
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    .section-title {
+      margin: 25px 0 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .logos, .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .logos img, .badges img {
+      height: 40px;
+      padding: 4px;
+    }
+
+    .faq {
+      padding: 16px;
+      border-top: 1px solid #ccc;
+    }
+
+    .faq h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .faq p {
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: #444;
+    }
+
+    .apply-button {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: #28a745; /* Green button */
+      color: white;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .apply-button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="#" class="back-arrow">←</a> <!-- Left arrow -->
+    <h1>Loans up to ₹10 Lakh</h1>
+    <p>Instant approval. No paperwork. 100% digital process.</p>
+  </div>
+
+  <div class="content">
+    <div class="detail"><strong>Amount:</strong> ₹30,000 to ₹10,00,000</div>
+    <div class="detail"><strong>EMI:</strong> Starts from ₹2,000/month</div>
+    <div class="detail"><strong>Tenure:</strong> 6 months – 5 years</div>
+    <div class="detail"><strong>Interest:</strong> Starting at 11.25% p.a.</div>
+    <div class="detail"><strong>Approval:</strong> In less than 5 minutes</div>
+    <div class="detail"><strong>Credit Check:</strong> Minimal requirements</div>
+
+    <div class="section-title">Trusted Lenders</div>
+    <div class="logos">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/75/Aditya_Birla_Group_Logo.svg/250px-Aditya_Birla_Group_Logo.svg.png" alt="Aditya Birla">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpjA54luld4Bp8EAVDBFDrnXz7RCYGfqaZMQ&s" alt="Axis Bank">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREGMvZDWCdnPMWIVLl6AiXZ9BUPbHBe7KCVw&s" alt="DMI Finance">
+    </div>
+
+    <div class="section-title">Our Guarantees</div>
+    <div class="badges">
+      <img src="https://img.icons8.com/fluency/48/approval.png" alt="RBI Approved" />
+      <img src="https://img.icons8.com/fluency/48/security-checked.png" alt="Data Secure" />
+      <img src="https://img.icons8.com/fluency/48/handshake.png" alt="Trusted" />
+    </div>
+
+    <div class="faq">
+      <h3>Who can apply?</h3>
+      <p>Any Indian resident aged 21–60 with valid PAN & bank account.</p>
+      <h3>Is it secure?</h3>
+      <p>Yes, we use 256-bit encryption and work with RBI-regulated NBFCs.</p>
+      <h3>When will I get the money?</h3>
+      <p>Usually within 24–48 hours after document e-verification.</p>
+    </div>
+  </div>
+
+  <a href="apply.html" class="apply-button">Apply Now</a>
+
+</body>
+</html>

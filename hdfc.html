@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Balance Check Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    .dark-purple-banner {
+      background-color: #5d2f8e;
+      color: white;
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+      padding: 20px 0;
+      width: 100%;
+    }
+    .container {
+      padding: 20px;
+    }
+    .box {
+      background-color: #330066;
+      border: 1px solid #5d2f8e;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .accounts-box {
+      margin-top: 18px;
+    }
+    .prepaid-box {
+      margin-top: 20px;
+    }
+    .side-heading {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #f0f0f0;
+    }
+    .account-details {
+      margin-left: 30px;
+      font-size: 16px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .account-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
+    }
+    .account-name:hover {
+      opacity: 0.8;
+    }
+    .account-logo {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      border-radius: 5px;
+      background-color: white;
+      padding: 3px;
+    }
+    .arrow {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-left: 10px;
+    }
+    .separator {
+      height: 1px;
+      background-color: #7d5bbe;
+      margin: 10px 30px;
+    }
+    .banner-container {
+      width: 100%;
+      margin-top: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .banner-wrapper {
+      display: flex;
+      transition: transform 1s ease-in-out;
+    }
+    .banner {
+      min-width: 100%;
+      background-color: #5d2f8e;
+      color: white;
+      font-size: 18px;
+      text-align: left;
+      padding: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+    }
+    .banner-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background-color: white;
+      border-radius: 5px;
+      padding: 5px;
+    }
+    .banner-info {
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dark-purple-banner">Check Balance</div>
+
+  <div class="container">
+
+    <!-- Accounts on UPI Box -->
+    <div class="box accounts-box">
+      <div class="side-heading">Accounts on UPI</div>
+      <div class="account-details">
+        <a href="hdfc_balance.html" class="account-name">
+          <img src="data:image/png;base64,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" alt="HDFC Logo" class="account-logo">
+          HDFC Bank- 5758
+        </a>
+      </div>
+    </div>
+
+    <!-- Pre-Paid Balance Box -->
+    <div class="box prepaid-box">
+      <div class="side-heading">Pre - Paid Balance</div>
+
+      <div class="account-details">
+        <div class="account-name">
+          <img src="https://images.icon-icons.com/2699/PNG/512/upi_logo_icon_169316.png" alt="UPI Logo" class="account-logo">
+          UPI Lite
+        </div>
+        <span class="arrow">&#10148;</span>
+      </div>
+
+      <div class="separator"></div>
+
+      <div class="account-details">
+        <div class="account-name">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-wIgsU9PrEdbJ2IefwDKCbyFNsPYfvsryHg&s" alt="FZ Pay Logo" class="account-logo">
+          FZ Pay Wallet
+        </div>
+        <span class="arrow">&#10148;</span>
+      </div>
+    </div>
+
+    <!-- Sliding Banner Section -->
+    <div class="banner-container">
+      <div class="banner-wrapper" id="bannerWrapper">
+
+        <div class="banner">
+          <img src="https://img.freepik.com/free-vector/sales-banner-template_1176-108.jpg" alt="Bank Offer Logo" class="banner-logo">
+          <div class="banner-info">Bank Offers - 10% Cashback on All Transactions!</div>
+        </div>
+
+        <div class="banner">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-wIgsU9PrEdbJ2IefwDKCbyFNsPYfvsryHg&s" alt="FZ Pay Logo" class="banner-logo">
+          <div class="banner-info">FZ Pay App - Transfer Money Instantly with No Fees!</div>
+        </div>
+
+        <div class="banner">
+          <img src="https://static.vecteezy.com/system/resources/previews/013/948/616/non_2x/bank-icon-logo-design-vector.jpg" alt="Banking Logo" class="banner-logo">
+          <div class="banner-info">Banking Made Easy - Get Your Cashbacks Directly to Wallet!</div>
+        </div>
+
+        <div class="banner">
+          <img src="https://static.vecteezy.com/system/resources/previews/004/563/615/non_2x/exclusive-offer-golden-medal-icon-seal-sign-isolated-on-white-background-illustration-free-vector.jpg" alt="Exclusive Offer Logo" class="banner-logo">
+          <div class="banner-info">Exclusive Offers - Get Instant Money Transfer with Zero Charges!</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for Sliding Banner
+    let currentIndex = 0;
+    const bannerWrapper = document.getElementById("bannerWrapper");
+    const totalBanners = document.querySelectorAll(".banner").length;
+
+    setInterval(() => {
+      currentIndex++;
+      if (currentIndex >= totalBanners) {
+        currentIndex = 0;
+      }
+      bannerWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }, 3000);
+  </script>
+
+</body>
+</html>

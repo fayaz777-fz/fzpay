@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FZpay Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://source.unsplash.com/1600x900/?technology,finance') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-fz {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(145deg, #8A2BE2, #DA70D6);
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 0 50px rgba(138, 43, 226, 0.8);
+      animation: pulseSize 1.5s ease-in-out infinite;
+      margin-right: 15px;
+    }
+
+    @keyframes pulseSize {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .logo-text {
+      font-size: 40px;
+      font-weight: 700;
+      color: #8A2BE2;
+      opacity: 0;
+      animation: fadeInText 1.5s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-fz:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 100px rgba(138, 43, 226, 1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="tel"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .checkbox-container input {
+      margin-right: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .btn {
+      width: 45%;
+      padding: 10px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .btn-back {
+      background-color: #ccc;
+    }
+
+    .btn-next {
+      background-color: #28a745;
+      color: white;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo-container">
+      <div class="logo-fz">FZ</div>
+      <div class="logo-text">pay</div>
+    </div>
+
+    <input id="phone" type="tel" placeholder="Enter mobile number" />
+
+    <div class="checkbox-container">
+      <input type="checkbox" id="terms" />
+      <label for="terms">I agree to the terms and continue</label>
+    </div>
+
+    <div class="buttons">
+     <button class="btn btn-back">Back</button>
+      <a href="bank_selection.html" class="btn btn-next">Next</a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  <script>
+    const phoneInput = document.querySelector("#phone");
+    const nextBtn = document.querySelector(".btn-next");
+    const termsCheckbox = document.querySelector("#terms");
+
+    const iti = window.intlTelInput(phoneInput, {
+      initialCountry: "auto",
+      geoIpLookup: callback => {
+        fetch('https://ipapi.co/json')
+          .then(res => res.json())
+          .then(data => callback(data.country_code))
+          .catch(() => callback('us'));
+      },
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (!termsCheckbox.checked) {
+        alert("Please agree to the terms to continue.");
+        return;
+      }
+      if (!iti.isValidNumber()) {
+        alert("Please enter a valid phone number.");
+        return;
+      }
+      alert("Phone number is valid. Proceeding...");
+    });
+  </script>
+</body>
+</html>

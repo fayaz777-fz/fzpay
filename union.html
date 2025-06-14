@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Balance Check Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    .dark-purple-banner {
+      background-color: #5d2f8e;
+      color: white;
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+      padding: 20px 0;
+      width: 100%;
+    }
+    .container {
+      padding: 20px;
+    }
+    .box {
+      background-color: #330066;
+      border: 1px solid #5d2f8e;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .accounts-box {
+      margin-top: 18px;
+    }
+    .prepaid-box {
+      margin-top: 20px;
+    }
+    .side-heading {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #f0f0f0;
+    }
+    .account-details {
+      margin-left: 30px;
+      font-size: 16px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .account-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
+    }
+    .account-name:hover {
+      opacity: 0.8;
+    }
+    .account-logo {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      border-radius: 5px;
+      background-color: white;
+      padding: 3px;
+    }
+    .arrow {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-left: 10px;
+    }
+    .separator {
+      height: 1px;
+      background-color: #7d5bbe;
+      margin: 10px 30px;
+    }
+    .banner-container {
+      width: 100%;
+      margin-top: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .banner-wrapper {
+      display: flex;
+      transition: transform 1s ease-in-out;
+    }
+    .banner {
+      min-width: 100%;
+      background-color: #5d2f8e;
+      color: white;
+      font-size: 18px;
+      text-align: left;
+      padding: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+    }
+    .banner-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background-color: white;
+      border-radius: 5px;
+      padding: 5px;
+    }
+    .banner-info {
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dark-purple-banner">Check Balance</div>
+
+  <div class="container">
+
+    <!-- Accounts on UPI Box -->
+    <div class="box accounts-box">
+      <div class="side-heading">Accounts on UPI</div>
+      <div class="account-details">
+        <a href="union_balance.html" class="account-name">
+          <img src="https://media.fortuneindia.com/fortune-india/import/company/logos/Union%20Bank%20of%20India.png?w=512&q=70" alt="UNION Logo" class="account-logo">
+          Union Bank Of India Bank- 5758
+        </a>
+      </div>
+    </div>
+
+    <!-- Pre-Paid Balance Box -->
+    <div class="box prepaid-box">
+      <div class="side-heading">Pre - Paid Balance</div>
+
+      <div class="account-details">
+        <div class="account-name">
+          <img src="https://images.icon-icons.com/2699/PNG/512/upi_logo_icon_169316.png" alt="UPI Logo" class="account-logo">
+          UPI Lite
+        </div>
+        <span class="arrow">&#10148;</span>
+      </div>
+
+      <div class="separator"></div>
+
+      <div class="account-details">
+        <div class="account-name">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-wIgsU9PrEdbJ2IefwDKCbyFNsPYfvsryHg&s" alt="FZ Pay Logo" class="account-logo">
+          FZ Pay Wallet
+        </div>
+        <span class="arrow">&#10148;</span>
+      </div>
+    </div>
+
+    <!-- Sliding Banner Section -->
+    <div class="banner-container">
+      <div class="banner-wrapper" id="bannerWrapper">
+
+        <div class="banner">
+          <img src="https://img.freepik.com/free-vector/sales-banner-template_1176-108.jpg" alt="Bank Offer Logo" class="banner-logo">
+          <div class="banner-info">Bank Offers - 10% Cashback on All Transactions!</div>
+        </div>
+
+        <div class="banner">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-wIgsU9PrEdbJ2IefwDKCbyFNsPYfvsryHg&s" alt="FZ Pay Logo" class="banner-logo">
+          <div class="banner-info">FZ Pay App - Transfer Money Instantly with No Fees!</div>
+        </div>
+
+        <div class="banner">
+          <img src="https://static.vecteezy.com/system/resources/previews/013/948/616/non_2x/bank-icon-logo-design-vector.jpg" alt="Banking Logo" class="banner-logo">
+          <div class="banner-info">Banking Made Easy - Get Your Cashbacks Directly to Wallet!</div>
+        </div>
+
+        <div class="banner">
+          <img src="https://static.vecteezy.com/system/resources/previews/004/563/615/non_2x/exclusive-offer-golden-medal-icon-seal-sign-isolated-on-white-background-illustration-free-vector.jpg" alt="Exclusive Offer Logo" class="banner-logo">
+          <div class="banner-info">Exclusive Offers - Get Instant Money Transfer with Zero Charges!</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for Sliding Banner
+    let currentIndex = 0;
+    const bannerWrapper = document.getElementById("bannerWrapper");
+    const totalBanners = document.querySelectorAll(".banner").length;
+
+    setInterval(() => {
+      currentIndex++;
+      if (currentIndex >= totalBanners) {
+        currentIndex = 0;
+      }
+      bannerWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }, 3000);
+  </script>
+
+</body>
+</html>

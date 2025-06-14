@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bus Booking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #00539C;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 30px;
+      border-radius: 10px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 120px;
+      height: auto;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      background-color: #00539C;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background-color: #003e7e;
+    }
+
+    .success-message {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Book Your Bus</div>
+
+  <div class="container">
+    <div class="logo">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq_MwGgICV4v-n8ugOaV8l1kgOyLSTYyvRew&s" alt="Bus Logo">
+    </div>
+
+    <form id="busForm">
+      <label for="from">From</label>
+      <input type="text" id="from" name="from" required>
+
+      <label for="to">To</label>
+      <input type="text" id="to" name="to" required>
+
+      <label for="date">Date of Travel</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="seats">Number of Seats</label>
+      <select id="seats" name="seats">
+        <option value="1">1 Seat</option>
+        <option value="2">2 Seats</option>
+        <option value="3">3 Seats</option>
+        <option value="4">4 Seats</option>
+      </select>
+
+      <button class="btn" type="submit">Book Now</button>
+    </form>
+
+    <div class="success-message" id="successMsg" style="display: none;">
+      ✅ Booking Confirmed!
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("busForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("successMsg").style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
